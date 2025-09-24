@@ -1,0 +1,466 @@
+---
+// CTA section component
+---
+
+<section class="py-24 bg-slate-900 text-white text-center relative overflow-hidden fade-in" id="contato">
+  <div class="absolute inset-0 cta-bg"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="max-w-4xl mx-auto">
+      
+      <h2 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">
+        Pronto para <span class="text-yellow-400">Economizar R$ 50.000/mês</span> com Nossa Análise?
+      </h2>
+      
+      <p class="text-xl opacity-90 mb-12 max-w-2xl mx-auto">
+        Fale com nossos especialistas e descubra como nossa análise pode <span class="text-yellow-400 font-bold">economizar até R$ 50.000 por mês</span> em assinaturas e mensalidades de softwares redundantes. 
+        <span class="text-red-400 font-bold">Elimine dados desintegrados</span> na jornada do cliente, 
+        <span class="text-red-400 font-bold">reduza cancelamentos</span> e <span class="text-red-400 font-bold">aumente seu lucro</span>.
+      </p>
+      
+      <div class="bg-white/5 backdrop-blur-xl rounded-sm p-12 max-w-4xl mx-auto border border-white/10">
+        <form class="space-y-6" id="contactForm">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="text-left">
+              <label class="block mb-2 font-semibold text-white">Nome Completo *</label>
+              <input 
+                type="text" 
+                name="nome"
+                required
+                class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-primary-500 focus:bg-white/10 transition-all duration-300"
+                placeholder="Seu nome completo"
+              />
+            </div>
+            
+            <div class="text-left">
+              <label class="block mb-2 font-semibold text-white">Email Corporativo *</label>
+              <input 
+                type="email" 
+                name="email"
+                required
+                class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-primary-500 focus:bg-white/10 transition-all duration-300"
+                placeholder="seu@empresa.com"
+              />
+            </div>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="text-left">
+              <label class="block mb-2 font-semibold text-white">Telefone/WhatsApp *</label>
+              <input 
+                type="tel" 
+                name="telefone"
+                required
+                class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-primary-500 focus:bg-white/10 transition-all duration-300"
+                placeholder="(11) 99999-9999"
+              />
+            </div>
+            
+            <div class="text-left">
+              <label class="block mb-2 font-semibold text-white">Empresa *</label>
+              <input 
+                type="text" 
+                name="empresa"
+                required
+                class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-primary-500 focus:bg-white/10 transition-all duration-300"
+                placeholder="Nome da sua empresa"
+              />
+            </div>
+          </div>
+          
+          <div class="text-left">
+            <label class="block mb-2 font-semibold text-white">Cargo *</label>
+            <input 
+              type="text" 
+              name="cargo"
+              required
+              class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-primary-500 focus:bg-white/10 transition-all duration-300"
+              placeholder="Seu cargo na empresa"
+            />
+          </div>
+          
+          <div class="text-left">
+            <label class="block mb-2 font-semibold text-white">Como podemos ajudar? (Opcional)</label>
+            <div class="relative">
+              <textarea 
+                id="mensagem"
+                name="mensagem"
+                rows="3"
+                class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-primary-500 focus:bg-white/10 transition-all duration-300 resize-none"
+                placeholder="Conte-nos sobre os principais desafios da sua empresa com softwares para nossa análise..."
+              ></textarea>
+              
+              <!-- Botões de IA -->
+              <div class="bg-orange-500/10 border border-orange-500/20 rounded-lg p-3 mt-2">
+                <div class="text-xs text-orange-300 mb-2 font-medium">🤖 Assistente IA</div>
+                <div class="flex gap-2 flex-wrap">
+                  <button 
+                    type="button" 
+                    id="sugerirMelhorias"
+                    class="px-4 py-2 bg-orange-500 text-white text-sm rounded hover:bg-orange-600 transition-colors duration-200 flex items-center gap-2"
+                  >
+                    💡 Gerar Sugestão
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Loading indicator -->
+              <div id="loadingIA" class="hidden mt-2 text-xs text-orange-400 flex items-center gap-1">
+                <div class="animate-spin w-3 h-3 border border-orange-400 border-t-transparent rounded-full"></div>
+                Processando com IA...
+              </div>
+
+              <!-- Modal de Sugestão -->
+              <div id="modalSugestao" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                <div class="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden transform scale-95 opacity-0 transition-all duration-300">
+                  <!-- Header do Modal -->
+                  <div class="bg-gradient-to-r from-orange-500 to-red-500 p-4 text-white">
+                    <div class="flex items-center gap-2">
+                      <span class="text-2xl">💡</span>
+                      <h3 class="text-lg font-bold">Sugestão de Melhoria</h3>
+                    </div>
+                  </div>
+                  
+                  <!-- Conteúdo do Modal -->
+                  <div class="p-6">
+                    <p class="text-slate-600 mb-4">Nossa IA gerou uma sugestão personalizada para sua descrição:</p>
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-6">
+                      <textarea 
+                        id="sugestaoTexto" 
+                        readonly 
+                        class="w-full h-32 bg-transparent border-none resize-none text-slate-700 leading-relaxed"
+                        placeholder="Sugestão aparecerá aqui..."
+                      ></textarea>
+                    </div>
+                    
+                    <!-- Botões do Modal -->
+                    <div class="flex gap-3 justify-end">
+                      <button 
+                        type="button" 
+                        id="cancelarSugestao"
+                        class="px-4 py-2 border border-slate-300 text-slate-600 rounded-lg hover:bg-slate-50 transition-colors duration-200"
+                      >
+                        Cancelar
+                      </button>
+                      <button 
+                        type="button" 
+                        id="aplicarSugestao"
+                        class="px-6 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-200 shadow-lg hover:shadow-xl"
+                      >
+                        ✅ Aplicar Sugestão
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <button 
+            type="submit" 
+            class="w-full bg-primary-500 text-white p-5 border-none rounded-sm font-bold text-lg cursor-pointer transition-all duration-300 shadow-lg hover:-translate-y-1 hover:shadow-xl hover:bg-primary-600"
+          >
+            🚀 Economizar R$ 50.000/mês - Agendar Análise Gratuita
+          </button>
+          
+          <p class="text-sm text-white/70 text-center mt-4">
+            * Campos obrigatórios. Entraremos em contato em até 24h.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Configuração da API Mistral
+  const MISTRAL_API_KEY = '9CiXytrrPSKoAsvJ7ipF5hxcFZcwvwyg';
+  const MISTRAL_API_URL = 'https://api.mistral.ai/v1/chat/completions';
+  
+  // Função para mostrar/ocultar loading
+  function toggleLoading(show) {
+    const loading = document.getElementById('loadingIA');
+    if (show) {
+      loading.classList.remove('hidden');
+    } else {
+      loading.classList.add('hidden');
+    }
+  }
+  
+  
+  // Função para sugerir melhorias
+  async function sugerirMelhorias() {
+    const textarea = document.getElementById('mensagem');
+    const nome = document.querySelector('input[name="nome"]').value;
+    const empresa = document.querySelector('input[name="empresa"]').value;
+    const cargo = document.querySelector('input[name="cargo"]').value;
+    const texto = textarea.value.trim();
+    
+    if (!texto) {
+      alert('Por favor, digite alguma descrição para melhorar.');
+      return;
+    }
+    
+    toggleLoading(true);
+    
+    try {
+      const response = await fetch(MISTRAL_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${MISTRAL_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: 'mistral-small-latest',
+          messages: [
+            {
+              role: 'system',
+              content: 'Você é um especialista em marketing e vendas B2B. Crie UMA ÚNICA sugestão de descrição melhorada, focando nos problemas reais da empresa com softwares redundantes e como nossa análise pode ajudar. Seja específico e profissional.'
+            },
+            {
+              role: 'user',
+              content: `Crie UMA sugestão de descrição melhorada para este lead:
+              
+              Dados do lead:
+              - Nome: ${nome || 'Não informado'}
+              - Empresa: ${empresa || 'Não informado'}
+              - Cargo: ${cargo || 'Não informado'}
+              - Descrição atual: "${texto}"
+              
+              Crie apenas UMA sugestão específica e profissional, focando em:
+              - Softwares redundantes custando R$ 50.000/mês
+              - Dados desintegrados na jornada do cliente
+              - Impacto na experiência e cancelamentos
+              - Como nossa análise pode resolver`
+            }
+          ],
+          max_tokens: 400,
+          temperature: 0.4
+        })
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        const sugestao = data.choices[0].message.content;
+        
+        // Mostrar modal com sugestão
+        mostrarModalSugestao(sugestao);
+      } else {
+        throw new Error('Erro ao sugerir melhorias');
+      }
+    } catch (error) {
+      console.error('Erro:', error);
+      alert('❌ Erro ao sugerir melhorias. Tente novamente.');
+    } finally {
+      toggleLoading(false);
+    }
+  }
+  
+  // Função para mostrar modal de sugestão
+  function mostrarModalSugestao(sugestao) {
+    const modal = document.getElementById('modalSugestao');
+    const sugestaoTexto = document.getElementById('sugestaoTexto');
+    
+    sugestaoTexto.value = sugestao;
+    modal.classList.remove('hidden');
+    
+    // Adicionar animação de entrada
+    setTimeout(() => {
+      modal.querySelector('.bg-white').style.transform = 'scale(1)';
+      modal.querySelector('.bg-white').style.opacity = '1';
+    }, 10);
+  }
+  
+  // Função para fechar modal
+  function fecharModal() {
+    const modal = document.getElementById('modalSugestao');
+    const modalContent = modal.querySelector('.bg-white');
+    
+    modalContent.style.transform = 'scale(0.95)';
+    modalContent.style.opacity = '0';
+    
+    setTimeout(() => {
+      modal.classList.add('hidden');
+    }, 200);
+  }
+  
+  // Função para aplicar sugestão
+  function aplicarSugestao() {
+    const sugestaoTexto = document.getElementById('sugestaoTexto').value;
+    const textarea = document.getElementById('mensagem');
+    
+    textarea.value = sugestaoTexto;
+    fecharModal();
+    
+    // Mostrar feedback de sucesso
+    const feedback = document.createElement('div');
+    feedback.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+    feedback.innerHTML = '✅ Sugestão aplicada com sucesso!';
+    document.body.appendChild(feedback);
+    
+    setTimeout(() => {
+      feedback.remove();
+    }, 3000);
+  }
+  
+  // Função para mostrar mensagem de sucesso personalizada
+  function mostrarMensagemSucesso() {
+    // Criar container do toast
+    const toast = document.createElement('div');
+    toast.className = 'fixed top-4 right-4 bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-lg shadow-2xl z-50 max-w-sm transform translate-x-full transition-all duration-500';
+    toast.innerHTML = `
+      <div class="flex items-start gap-3">
+        <div class="flex-shrink-0">
+          <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+            <span class="text-xl">🎉</span>
+          </div>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-bold text-lg mb-1">Obrigado pelo seu interesse!</h3>
+          <p class="text-sm opacity-90 leading-relaxed">
+            Recebemos sua solicitação de análise gratuita. Nossa equipe entrará em contato em até 24h para agendar sua consultoria especializada.
+          </p>
+        </div>
+        <button onclick="this.parentElement.parentElement.remove()" class="text-white/70 hover:text-white text-xl leading-none">&times;</button>
+      </div>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Animar entrada
+    setTimeout(() => {
+      toast.classList.remove('translate-x-full');
+      toast.classList.add('translate-x-0');
+    }, 100);
+    
+    // Auto-remover após 8 segundos
+    setTimeout(() => {
+      toast.classList.remove('translate-x-0');
+      toast.classList.add('translate-x-full');
+      setTimeout(() => {
+        if (toast.parentElement) {
+          toast.remove();
+        }
+      }, 500);
+    }, 8000);
+  }
+  
+  // Event listeners para o modal
+  document.getElementById('cancelarSugestao').addEventListener('click', fecharModal);
+  document.getElementById('aplicarSugestao').addEventListener('click', aplicarSugestao);
+  
+  // Fechar modal clicando fora dele
+  document.getElementById('modalSugestao').addEventListener('click', function(e) {
+    if (e.target === this) {
+      fecharModal();
+    }
+  });
+  
+  // Fechar modal com ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('modalSugestao');
+      if (!modal.classList.contains('hidden')) {
+        fecharModal();
+      }
+    }
+  });
+
+  // Event listener para o botão de IA
+  document.getElementById('sugerirMelhorias').addEventListener('click', sugerirMelhorias);
+  
+  // Formulário principal
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const data = {
+      nome: formData.get('nome'),
+      email: formData.get('email'),
+      telefone: formData.get('telefone'),
+      empresa: formData.get('empresa'),
+      cargo: formData.get('cargo'),
+      mensagem: formData.get('mensagem') || '',
+      timestamp: new Date().toISOString(),
+      source: 'klonatec-website'
+    };
+    
+    // Mostrar loading no botão
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '⏳ Salvando...';
+    submitBtn.disabled = true;
+    
+    try {
+      // Configuração do Supabase
+      const SUPABASE_URL = 'https://rvbqybwpgplgnwgrqcxy.supabase.co';
+      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2YnF5YndwZ3BsZ253Z3JxY3h5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4OTA4MDgsImV4cCI6MjA3MTQ2NjgwOH0.W_XCEBNnC6MqxN9vVTQJr8w7XrRKnBAIje-gxkW2s4A';
+      
+      // Enviar para Supabase
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'apikey': SUPABASE_ANON_KEY,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({
+          nome: data.nome,
+          email: data.email,
+          telefone: data.telefone,
+          empresa: data.empresa,
+          cargo: data.cargo,
+          mensagem: data.mensagem,
+          source: data.source,
+          timestamp_original: data.timestamp,
+          data_processamento: new Date().toISOString(),
+          tipo_lead: 'lead_basico',
+          prioridade: 'media',
+          segmento: 'nao_identificado',
+          lead_score: 10,
+          status: 'novo_lead',
+          proximo_passo: 'Entraremos em contato em até 24h para uma análise gratuita.',
+          valor_estimado: 50000,
+          probabilidade: 25,
+          data_fechamento: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+        })
+      });
+      
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
+      
+      if (response.ok) {
+        // Tentar ler a resposta como JSON, mas se falhar, assumir sucesso
+        try {
+          const result = await response.json();
+          console.log('Lead salvo com sucesso:', result);
+        } catch (jsonError) {
+          console.log('Resposta não é JSON, mas operação foi bem-sucedida');
+        }
+        
+        // Mostrar mensagem personalizada de sucesso
+        mostrarMensagemSucesso();
+        this.reset();
+      } else {
+        // Tentar ler erro como texto primeiro
+        let errorMessage = `Status: ${response.status}`;
+        try {
+          const errorText = await response.text();
+          console.error('Erro na resposta:', response.status, errorText);
+          errorMessage += ` - ${errorText}`;
+        } catch (textError) {
+          console.error('Erro ao ler resposta como texto:', textError);
+        }
+        alert('❌ Erro ao salvar no banco: ' + errorMessage);
+      }
+    } catch (error) {
+      console.error('Erro de conexão:', error);
+      alert('❌ Erro de conexão: ' + error.message);
+    } finally {
+      // Restaurar botão
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    }
+  });
+</script>
