@@ -151,10 +151,11 @@
   }
 
   // Formulário principal
-  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  document.getElementById('contactForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     
-    const formData = new FormData(this);
+    const form = this as HTMLFormElement;
+    const formData = new FormData(form);
     const data = {
       nome: formData.get('nome'),
       email: formData.get('email'),
@@ -167,7 +168,7 @@
     };
     
     // Mostrar loading no botão
-    const submitBtn = this.querySelector('button[type="submit"]');
+    const submitBtn = this.querySelector('button[type="submit"]') as HTMLButtonElement;
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '⏳ Salvando...';
     submitBtn.disabled = true;
@@ -220,9 +221,9 @@
           console.log('Resposta não é JSON, mas operação foi bem-sucedida');
         }
         
-        // Mostrar mensagem personalizada de sucesso
-        mostrarMensagemSucesso();
-        this.reset();
+            // Mostrar mensagem personalizada de sucesso
+            mostrarMensagemSucesso();
+            form.reset();
       } else {
         // Tentar ler erro como texto primeiro
         let errorMessage = `Status: ${response.status}`;
@@ -235,9 +236,9 @@
         }
         alert('❌ Erro ao salvar no banco: ' + errorMessage);
       }
-    } catch (error) {
-      console.error('Erro de conexão:', error);
-      alert('❌ Erro de conexão: ' + error.message);
+        } catch (error) {
+          console.error('Erro de conexão:', error);
+          alert('❌ Erro de conexão: ' + (error as Error).message);
     } finally {
       // Restaurar botão
       submitBtn.innerHTML = originalText;
