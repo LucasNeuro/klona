@@ -1,15 +1,65 @@
 ---
-// Navbar component
+// Navbar component - 100% Responsivo
 ---
 
+<style>
+  .navbar-logo {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+  }
+  
+  .navbar-button {
+    width: clamp(2.5rem, 8vw, 3rem);
+    height: clamp(2.5rem, 8vw, 3rem);
+    padding: 0;
+  }
+  
+  .navbar-icon {
+    width: clamp(1rem, 4vw, 1.25rem);
+    height: clamp(1rem, 4vw, 1.25rem);
+  }
+  
+  /* Mobile específico */
+  @media (max-width: 640px) {
+    .navbar-logo {
+      font-size: 1.25rem;
+    }
+    .navbar-button {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    .navbar-icon {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+  
+  /* Telas muito pequenas */
+  @media (max-width: 320px) {
+    .navbar-logo {
+      font-size: 1rem;
+    }
+    .navbar-button {
+      width: 2rem;
+      height: 2rem;
+    }
+    .navbar-icon {
+      width: 0.875rem;
+      height: 0.875rem;
+    }
+  }
+</style>
+
 <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-xl border-b border-slate-200 z-50 transition-all duration-300">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex justify-between items-center py-4">
-      <a href="#" class="text-3xl font-black text-primary-500 no-underline">
+  <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
+    <div class="flex justify-between items-center py-3 sm:py-4">
+      <!-- Logo responsivo -->
+      <a href="#" class="navbar-logo font-black text-primary-500 no-underline">
         KLONATEC
       </a>
-      <a href="#contato" class="bg-gradient-to-r from-primary-500 to-primary-600 text-white px-4 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      
+      <!-- Botão com ícone de olho - 100% responsivo -->
+      <a href="#contato" class="navbar-button bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center">
+        <svg class="navbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
         </svg>
