@@ -16,7 +16,7 @@
       </p>
     </div>
     
-    <div class="bg-white/5 backdrop-blur-lg rounded-lg p-8 border border-white/10">
+    <div class="bg-white/5 backdrop-blur-lg rounded p-8 border border-white/10">
       <form id="contactForm" class="space-y-6">
         <div class="grid md:grid-cols-2 gap-6">
           <div>
@@ -82,6 +82,97 @@
         </div>
         
         <div>
+          <label class="block text-sm font-medium mb-3">Quais softwares sua empresa utiliza? *</label>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+            <!-- CRM -->
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="Salesforce" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">Salesforce</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="HubSpot" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">HubSpot</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="Pipedrive" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">Pipedrive</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="Zoho CRM" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">Zoho CRM</span>
+            </label>
+            
+            <!-- Atendimento -->
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="Zendesk" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">Zendesk</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="Freshdesk" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">Freshdesk</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="Intercom" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">Intercom</span>
+            </label>
+            
+            <!-- Comunicação -->
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="Slack" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">Slack</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="Microsoft Teams" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">Microsoft Teams</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="Discord" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">Discord</span>
+            </label>
+            
+            <!-- ERP -->
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="SAP" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">SAP</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="Oracle" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">Oracle</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="NetSuite" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">NetSuite</span>
+            </label>
+            
+            <!-- Outros -->
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="ClickUp" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">ClickUp</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="Asana" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">Asana</span>
+            </label>
+            <label class="flex items-center space-x-2 cursor-pointer p-2 rounded border border-white/20 hover:bg-white/10 transition-all">
+              <input type="checkbox" name="softwares" value="Trello" class="rounded text-primary-500 focus:ring-primary-500">
+              <span class="text-sm">Trello</span>
+            </label>
+          </div>
+          
+          <!-- Campo para outros softwares -->
+          <div>
+            <label for="outros_softwares" class="block text-sm font-medium mb-2">Outros softwares (se não estiver na lista acima)</label>
+            <input 
+              type="text" 
+              id="outros_softwares" 
+              name="outros_softwares" 
+              class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-primary-500 focus:bg-white/10 transition-all duration-300"
+              placeholder="Ex: Monday.com, Notion, Jira, etc."
+            />
+          </div>
+        </div>
+        
+        <div>
           <label for="mensagem" class="block text-sm font-medium mb-2">Como podemos ajudar? (Opcional)</label>
           <textarea 
             id="mensagem" 
@@ -96,7 +187,7 @@
           type="submit" 
           class="w-full bg-primary-500 text-white p-5 border-none rounded-sm font-bold text-lg cursor-pointer transition-all duration-300 shadow-lg hover:-translate-y-1 hover:shadow-xl hover:bg-primary-600"
         >
-          🚀 Economizar R$ 50.000/mês - Agendar Análise Gratuita
+          🚀 RECEBA PRÉ-ANÁLISE KaaS GRATUITA
         </button>
         
         <p class="text-sm text-white/60 text-center">
@@ -112,7 +203,7 @@
   function mostrarMensagemSucesso() {
     // Criar container do toast
     const toast = document.createElement('div');
-    toast.className = 'fixed top-4 right-4 bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-lg shadow-2xl z-50 max-w-sm transform translate-x-full transition-all duration-500';
+    toast.className = 'fixed top-4 right-4 bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded shadow-2xl z-50 max-w-sm transform translate-x-full transition-all duration-500';
     toast.innerHTML = `
       <div class="flex items-start gap-3">
         <div class="flex-shrink-0">
@@ -156,6 +247,16 @@
     
     const form = this as HTMLFormElement;
     const formData = new FormData(form);
+    // Capturar softwares selecionados
+    const softwaresSelecionados = Array.from(form.querySelectorAll('input[name="softwares"]:checked')).map(input => input.value);
+    const outrosSoftwares = formData.get('outros_softwares') || '';
+    
+    // Validar se pelo menos um software foi selecionado
+    if (softwaresSelecionados.length === 0 && !outrosSoftwares.trim()) {
+      alert('❌ Por favor, selecione pelo menos um software que sua empresa utiliza.');
+      return;
+    }
+    
     const data = {
       nome: formData.get('nome'),
       email: formData.get('email'),
@@ -163,6 +264,8 @@
       empresa: formData.get('empresa'),
       cargo: formData.get('cargo'),
       mensagem: formData.get('mensagem') || '',
+      softwares: softwaresSelecionados,
+      outros_softwares: outrosSoftwares,
       timestamp: new Date().toISOString(),
       source: 'klonatec-website'
     };
@@ -194,6 +297,8 @@
           empresa: data.empresa,
           cargo: data.cargo,
           mensagem: data.mensagem,
+          softwares: data.softwares,
+          outros_softwares: data.outros_softwares,
           source: data.source,
           timestamp_original: data.timestamp,
           data_processamento: new Date().toISOString(),

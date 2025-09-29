@@ -2,8 +2,20 @@
 // Services section component
 ---
 
-<section class="py-24 bg-white fade-in">
-  <div class="max-w-7xl mx-auto px-6">
+<section class="py-24 bg-white fade-in relative overflow-hidden">
+  <!-- Globo fixo cobrindo toda a largura da página -->
+  <div class="absolute inset-0 opacity-[0.21] w-screen left-1/2 transform -translate-x-1/2">
+    <img 
+      src="https://media.istockphoto.com/id/1326403396/pt/vetorial/global-network-connection-world-map-point-and-line-composition-concept-of-global-business.jpg?s=1024x1024&w=is&k=20&c=oXbppejslWM90i4HAYd56b7o6CcJSrxu4uKuP8d_qgw=" 
+      alt="Rede global de conexões" 
+      class="w-full h-full object-cover"
+      onerror="this.style.display='none'"
+      loading="lazy"
+      style="filter: brightness(1.2) contrast(0.8);"
+    />
+  </div>
+  
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="text-center max-w-4xl mx-auto mb-16">
       <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-4 tracking-tight">
         Nossos <span class="gradient-text">Serviços</span>
@@ -14,181 +26,150 @@
     </div>
     
     <div class="grid md:grid-cols-2 gap-8">
-      <div class="bg-slate-50 rounded-sm overflow-hidden border border-slate-200 transition-all duration-400 hover:-translate-y-2 hover:shadow-2xl group">
-        <div class="p-8 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center">
-          <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <div class="w-8 h-8 bg-white rounded-full"></div>
-          </div>
-          <h3 class="text-2xl font-bold mb-2">Investigação Inteligente</h3>
-          <p class="opacity-90">Serviço especializado para investigação profunda dos seus sistemas</p>
-        </div>
+      <div class="bg-white rounded shadow-lg border border-slate-200 overflow-hidden">
+        <div class="h-1 bg-orange-500"></div>
         <div class="p-8">
-          <div class="mb-6">
-            <h4 class="text-lg font-semibold text-slate-900 mb-3">O que fazemos:</h4>
-            <p class="text-slate-600 leading-relaxed mb-4">
-              Nossa análise especializada utiliza IA para investigar profundamente todos os seus sistemas, mapeando funcionalidades, identificando redundâncias e calculando o custo real de cada feature que consome seu dinheiro.
-            </p>
-          </div>
-          <ul class="space-y-3">
-            <li class="flex items-center gap-3 text-slate-600">
+          <h4 class="text-lg font-bold text-slate-900 mb-4">1. Investigação Inteligente KaaS</h4>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            Descobrimos o que ninguém te contou sobre seus custos tecnológicos através de uma análise forense completa.
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
               <span class="text-sm">Mapeamento completo de softwares e funcionalidades</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
+            </div>
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
               <span class="text-sm">Identificação de redundâncias e sobreposições</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
+            </div>
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
-              <span class="text-sm">Avaliação de custos e ROI de cada sistema</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
+              <span class="text-sm">Avaliação de custos reais e ROI por feature</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
               <span class="text-sm">Relatório executivo com recomendações estratégicas</span>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
       
-      <div class="bg-slate-50 rounded-sm overflow-hidden border border-slate-200 transition-all duration-400 hover:-translate-y-2 hover:shadow-2xl group">
-        <div class="p-8 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center">
-          <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <div class="w-8 h-8 bg-white rounded-full"></div>
-          </div>
-          <h3 class="text-2xl font-bold mb-2">Klonagem de Software</h3>
-          <p class="opacity-90">Criação da solução integrada</p>
-        </div>
+      <div class="bg-white rounded shadow-lg border border-slate-200 overflow-hidden">
+        <div class="h-1 bg-orange-500"></div>
         <div class="p-8">
-          <div class="mb-6">
-            <h4 class="text-lg font-semibold text-slate-900 mb-3">O que fazemos:</h4>
-            <p class="text-slate-600 leading-relaxed mb-4">
-              Desenvolvemos uma solução única que concentra as melhores funcionalidades de todos os seus sistemas, eliminando redundâncias e criando uma plataforma integrada e eficiente.
-            </p>
-          </div>
-          <ul class="space-y-3">
-            <li class="flex items-center gap-3 text-slate-600">
+          <h4 class="text-lg font-bold text-slate-900 mb-4">2. Klonagem de Software</h4>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            Cirurgia de precisão que remove o redundante e preserva o essencial, criando uma plataforma unificada inteligente.
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
-              <span class="text-sm">Desenvolvimento da plataforma unificada</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
+              <span class="text-sm">Desenvolvimento da plataforma unificada KaaS</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
               <span class="text-sm">Migração segura de dados e processos</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
+            </div>
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
-              <span class="text-sm">Integração com sistemas existentes</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
+              <span class="text-sm">Integração nativa com sistemas existentes</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
               <span class="text-sm">Testes rigorosos e validação completa</span>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
       
-      <div class="bg-slate-50 rounded-sm overflow-hidden border border-slate-200 transition-all duration-400 hover:-translate-y-2 hover:shadow-2xl group">
-        <div class="p-8 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center">
-          <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <div class="w-8 h-8 bg-white rounded-full"></div>
-          </div>
-          <h3 class="text-2xl font-bold mb-2">Agentes IA Especializados</h3>
-          <p class="opacity-90">Automação inteligente por setor</p>
-        </div>
+      <div class="bg-white rounded shadow-lg border border-slate-200 overflow-hidden">
+        <div class="h-1 bg-orange-500"></div>
         <div class="p-8">
-          <div class="mb-6">
-            <h4 class="text-lg font-semibold text-slate-900 mb-3">O que fazemos:</h4>
-            <p class="text-slate-600 leading-relaxed mb-4">
-              Desenvolvemos agentes de IA personalizados para cada departamento da sua empresa, automatizando processos e fornecendo insights inteligentes para otimização contínua.
-            </p>
-          </div>
-          <ul class="space-y-3">
-            <li class="flex items-center gap-3 text-slate-600">
+          <h4 class="text-lg font-bold text-slate-900 mb-4">3. Agentes IA Especializados</h4>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            Cada departamento ganha um time IA dedicado 24/7 para automação inteligente e insights preditivos.
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
               <span class="text-sm">Agentes personalizados por departamento</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
+            </div>
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
-              <span class="text-sm">Automação de processos repetitivos</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
+              <span class="text-sm">Automação inteligente de processos</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
-              <span class="text-sm">Avaliação preditiva e insights avançados</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
+              <span class="text-sm">Insights preditivos e analytics avançados</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
-              <span class="text-sm">Suporte contínuo e evolução constante</span>
-            </li>
-          </ul>
+              <span class="text-sm">Evolução contínua e aprendizado</span>
+            </div>
+          </div>
         </div>
       </div>
       
-      <div class="bg-slate-50 rounded-sm overflow-hidden border border-slate-200 transition-all duration-400 hover:-translate-y-2 hover:shadow-2xl group">
-        <div class="p-8 bg-gradient-to-r from-purple-500 to-purple-600 text-white text-center">
-          <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <div class="w-8 h-8 bg-white rounded-full"></div>
-          </div>
-          <h3 class="text-2xl font-bold mb-2">Treinamento em IA</h3>
-          <p class="opacity-90">Capacitação da sua equipe</p>
-        </div>
+      <div class="bg-white rounded shadow-lg border border-slate-200 overflow-hidden">
+        <div class="h-1 bg-orange-500"></div>
         <div class="p-8">
-          <div class="mb-6">
-            <h4 class="text-lg font-semibold text-slate-900 mb-3">O que fazemos:</h4>
-            <p class="text-slate-600 leading-relaxed mb-4">
-              Capacitamos suas equipes para trabalhar eficientemente com tecnologias de IA, eliminando a resistência à mudança e maximizando os benefícios da automação inteligente.
-            </p>
-          </div>
-          <ul class="space-y-3">
-            <li class="flex items-center gap-3 text-slate-600">
+          <h4 class="text-lg font-bold text-slate-900 mb-4">4. Fluência Digital KaaS</h4>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            Sua equipe não aprende IA - torna-se fluente em eficiência através de treinamento prático e mentoria contínua.
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
               <span class="text-sm">Treinamento prático em IA e automação</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
+            </div>
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
               <span class="text-sm">Workshops personalizados por departamento</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
+            </div>
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
-              <span class="text-sm">Certificação em ferramentas de IA</span>
-            </li>
-            <li class="flex items-center gap-3 text-slate-600">
+              <span class="text-sm">Certificação em ferramentas KaaS</span>
+            </div>
+            <div class="flex items-center gap-3 text-slate-600">
               <div class="w-5 h-5 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
                 ✓
               </div>
-              <span class="text-sm">Suporte contínuo e mentoria</span>
-            </li>
-          </ul>
+              <span class="text-sm">Mentoria contínua e suporte estratégico</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
