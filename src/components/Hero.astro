@@ -3,31 +3,117 @@
 ---
 
 <style>
+  /* Responsividade Ultra Avançada */
+  .hero-title {
+    font-size: clamp(1.5rem, 4vw, 4rem);
+    line-height: 1.1;
+    word-break: keep-all;
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(0.875rem, 2.5vw, 1.5rem);
+    line-height: 1.4;
+  }
+  
+  .hero-description {
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
+    line-height: 1.5;
+  }
+  
   .cta-button {
+    font-size: clamp(0.75rem, 2vw, 1.125rem);
+    padding: clamp(0.75rem, 2vw, 1.25rem) clamp(1rem, 3vw, 2rem);
     word-break: keep-all;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   
-  @media (max-width: 640px) {
+  /* Mobile First - Breakpoints Específicos */
+  @media (max-width: 320px) {
+    .hero-title {
+      font-size: 1.25rem;
+    }
+    .hero-subtitle {
+      font-size: 0.75rem;
+    }
+    .hero-description {
+      font-size: 0.625rem;
+    }
     .cta-button {
-      white-space: normal;
-      word-break: break-word;
+      font-size: 0.625rem;
+      padding: 0.5rem 0.75rem;
     }
   }
   
-  /* Otimizações para mobile */
-  @media (max-width: 475px) {
-    .cta-button {
+  @media (min-width: 321px) and (max-width: 480px) {
+    .hero-title {
+      font-size: 1.5rem;
+    }
+    .hero-subtitle {
+      font-size: 0.875rem;
+    }
+    .hero-description {
       font-size: 0.75rem;
-      padding: 0.5rem 0.75rem;
+    }
+  }
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+    .hero-description {
+      font-size: 0.875rem;
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+    .hero-description {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .hero-title {
+      font-size: 3rem;
+    }
+    .hero-subtitle {
+      font-size: 1.5rem;
+    }
+    .hero-description {
+      font-size: 1.125rem;
     }
   }
   
   /* Garantir que o texto não quebre */
   .cta-button span {
     display: inline-block;
+  }
+  
+  /* Otimização para telas muito pequenas */
+  @media (max-width: 280px) {
+    .hero-title {
+      font-size: 1rem;
+    }
+    .hero-subtitle {
+      font-size: 0.625rem;
+    }
+    .hero-description {
+      font-size: 0.5rem;
+    }
+    .cta-button {
+      font-size: 0.5rem;
+      padding: 0.375rem 0.5rem;
+    }
   }
 </style>
 
@@ -36,15 +122,15 @@
   
   <div class="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
     <div class="text-center max-w-5xl mx-auto">
-      <!-- Título principal - 100% Responsivo em 2 linhas -->
-      <h1 class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 sm:mb-6 leading-tight tracking-tight">
+      <!-- Título principal - 100% Responsivo Ultra Avançado -->
+      <h1 class="hero-title font-black mb-4 sm:mb-6 leading-tight tracking-tight text-center">
         <span class="block">KaaS - <span class="gradient-text">Klone as a Service</span></span>
         <span class="block">A <span class="text-yellow-400">Revolução</span> que <span class="text-red-400">Elimina</span> até R$ 50.000/mês</span>
       </h1>
       
-      <!-- Texto Principal Unificado -->
-      <div class="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl text-slate-300 mb-6 sm:mb-8 md:mb-10 lg:mb-12 font-normal max-w-5xl mx-auto leading-relaxed px-2 text-justify">
-        <p class="mb-4 sm:mb-6 md:mb-8 text-lg sm:text-xl md:text-2xl font-bold text-white">
+      <!-- Texto Principal Unificado - Responsivo -->
+      <div class="hero-description text-slate-300 mb-6 sm:mb-8 md:mb-10 lg:mb-12 font-normal max-w-5xl mx-auto leading-relaxed px-2 text-justify">
+        <p class="hero-subtitle mb-4 sm:mb-6 md:mb-8 font-bold text-white">
           Cirurgia de Eficiência: Nossa IA Identifica Redundâncias e Cria uma Solução Única com Apenas o Essencial. <span class="text-red-400">Pare de desperdiçar R$ 50.000/mês</span> com softwares redundantes e dados fragmentados que geram insatisfação, perda de vendas e cancelamentos. <span class="text-yellow-400">Economize 78%</span> e multiplique sua eficiência por 6x com nossa plataforma unificada inteligente.
         </p>
       </div>

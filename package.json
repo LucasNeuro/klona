@@ -17,9 +17,7 @@
     "typescript": "^5.9.2"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10"
-  },
-  "optionalDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "@rollup/rollup-linux-x64-gnu": "^4.52.3"
   }
 }
