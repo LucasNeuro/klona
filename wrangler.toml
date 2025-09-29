@@ -1,0 +1,13 @@
+name = "klonatec-site"
+compatibility_date = "2024-01-01"
+
+[build]
+command = "npm run build"
+cwd = "."
+
+[[pages_builds]]
+source = "dist"
+destination = ""
+
+[env.production]
+name = "klonatec-site"
