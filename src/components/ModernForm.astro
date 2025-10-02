@@ -1,0 +1,741 @@
+---
+// Formulário Moderno Multi-etapas
+---
+
+<style>
+  /* Animações e transições */
+  .form-step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.5s ease-in-out;
+    pointer-events: none;
+  }
+  
+  .form-step.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+    position: relative;
+  }
+  
+  .form-step.prev {
+    opacity: 0;
+    transform: translateX(-50px);
+    pointer-events: none;
+  }
+  
+  /* Container para as etapas */
+  .form-steps-container {
+    position: relative;
+    min-height: 400px;
+  }
+  
+  /* Dropdown multiselect customizado */
+  .multiselect-dropdown {
+    position: relative;
+    width: 100%;
+  }
+  
+  .multiselect-trigger {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 1rem;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .multiselect-trigger:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #f59e0b;
+  }
+  
+  .multiselect-trigger:focus {
+    outline: none;
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+  }
+  
+  .multiselect-dropdown.open .multiselect-trigger {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+  }
+  
+  .multiselect-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+  }
+  
+  .multiselect-dropdown.open .multiselect-options {
+    display: block;
+  }
+  
+  .multiselect-option {
+    padding: 0.75rem 1rem;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .multiselect-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .multiselect-option.selected {
+    background: rgba(245, 158, 11, 0.2);
+  }
+  
+  .multiselect-option input[type="checkbox"] {
+    margin: 0;
+  }
+  
+  .selected-count {
+    background: #f59e0b;
+    color: black;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+  
+  /* Progress bar */
+  .progress-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f59e0b, #ef4444);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+  }
+  
+  /* Botões de navegação */
+  .nav-button {
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .nav-button.primary {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: white;
+  }
+  
+  .nav-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+  }
+  
+  .nav-button.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .nav-button.secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Loading state */
+  .loading {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .multiselect-options {
+      max-height: 200px;
+    }
+  }
+</style>
+
+<section class="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+  <div class="max-w-4xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+    <div class="text-center mb-8 sm:mb-12">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-black mb-4 text-white">
+        Receba sua <span class="text-yellow-400">Análise KaaS Gratuita</span>
+      </h2>
+      <p class="text-lg text-slate-300">
+        Descubra quanto você pode economizar otimizando seus sistemas
+      </p>
+    </div>
+    
+    <div class="bg-white/5 backdrop-blur-lg rounded-lg p-6 sm:p-8 border border-white/10">
+      <!-- Progress Bar -->
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 25%"></div>
+      </div>
+      
+      <form id="modernContactForm">
+        <div class="form-steps-container">
+          <!-- Etapa 1: Informações Pessoais -->
+          <div class="form-step active" id="step1">
+          <h3 class="text-xl font-bold mb-6 text-yellow-400">📋 Informações Pessoais</h3>
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="nome" class="block text-sm font-medium mb-2">Nome Completo *</label>
+              <input 
+                type="text" 
+                id="nome" 
+                name="nome" 
+                required 
+                class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300"
+                placeholder="Seu nome completo"
+              />
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium mb-2">Email *</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300"
+                placeholder="seu@email.com"
+              />
+            </div>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="telefone" class="block text-sm font-medium mb-2">Telefone/WhatsApp</label>
+              <input 
+                type="tel" 
+                id="telefone" 
+                name="telefone" 
+                class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300"
+                placeholder="(11) 99999-9999"
+              />
+            </div>
+            
+            <div>
+              <label for="empresa" class="block text-sm font-medium mb-2">Empresa *</label>
+              <input 
+                type="text" 
+                id="empresa" 
+                name="empresa" 
+                required 
+                class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300"
+                placeholder="Nome da sua empresa"
+              />
+            </div>
+          </div>
+          
+          <div>
+            <label for="cargo" class="block text-sm font-medium mb-2">Cargo *</label>
+            <input 
+              type="text" 
+              id="cargo" 
+              name="cargo" 
+              required 
+              class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300"
+              placeholder="CEO, CTO, Diretor, etc."
+            />
+          </div>
+          
+          <div class="flex justify-end mt-8">
+            <button type="button" id="nextBtn1" class="nav-button primary">
+              Próximo → Software
+            </button>
+          </div>
+        </div>
+        
+        <!-- Etapa 2: Softwares -->
+        <div class="form-step" id="step2">
+          <h3 class="text-xl font-bold mb-6 text-yellow-400">💻 Softwares da Empresa</h3>
+          
+          <div>
+            <label class="block text-sm font-medium mb-3">Quais softwares sua empresa utiliza? *</label>
+            
+            <div class="multiselect-dropdown" id="softwareDropdown">
+              <div class="multiselect-trigger" id="softwareTrigger">
+                <span id="softwarePlaceholder">Selecione os softwares utilizados</span>
+                <div class="flex items-center gap-2">
+                  <span class="selected-count" id="selectedCount" style="display: none;">0</span>
+                  <svg class="w-5 h-5 transition-transform" id="dropdownArrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </div>
+              
+              <div class="multiselect-options" id="softwareOptions">
+                <!-- CRM -->
+                <div class="p-3 border-b border-white/10">
+                  <h4 class="text-yellow-400 font-bold text-sm mb-2">CRM</h4>
+                  <div class="space-y-1">
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="Salesforce">
+                      <span>Salesforce</span>
+                    </label>
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="HubSpot">
+                      <span>HubSpot</span>
+                    </label>
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="Pipedrive">
+                      <span>Pipedrive</span>
+                    </label>
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="Zoho CRM">
+                      <span>Zoho CRM</span>
+                    </label>
+                  </div>
+                </div>
+                
+                <!-- Atendimento -->
+                <div class="p-3 border-b border-white/10">
+                  <h4 class="text-yellow-400 font-bold text-sm mb-2">Atendimento</h4>
+                  <div class="space-y-1">
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="Zendesk">
+                      <span>Zendesk</span>
+                    </label>
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="Freshdesk">
+                      <span>Freshdesk</span>
+                    </label>
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="Intercom">
+                      <span>Intercom</span>
+                    </label>
+                  </div>
+                </div>
+                
+                <!-- Comunicação -->
+                <div class="p-3 border-b border-white/10">
+                  <h4 class="text-yellow-400 font-bold text-sm mb-2">Comunicação</h4>
+                  <div class="space-y-1">
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="Slack">
+                      <span>Slack</span>
+                    </label>
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="Microsoft Teams">
+                      <span>Microsoft Teams</span>
+                    </label>
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="Discord">
+                      <span>Discord</span>
+                    </label>
+                  </div>
+                </div>
+                
+                <!-- ERP -->
+                <div class="p-3 border-b border-white/10">
+                  <h4 class="text-yellow-400 font-bold text-sm mb-2">ERP</h4>
+                  <div class="space-y-1">
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="SAP">
+                      <span>SAP</span>
+                    </label>
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="Oracle">
+                      <span>Oracle</span>
+                    </label>
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="NetSuite">
+                      <span>NetSuite</span>
+                    </label>
+                  </div>
+                </div>
+                
+                <!-- Gestão de Projetos -->
+                <div class="p-3">
+                  <h4 class="text-yellow-400 font-bold text-sm mb-2">Gestão de Projetos</h4>
+                  <div class="space-y-1">
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="ClickUp">
+                      <span>ClickUp</span>
+                    </label>
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="Asana">
+                      <span>Asana</span>
+                    </label>
+                    <label class="multiselect-option">
+                      <input type="checkbox" name="softwares" value="Trello">
+                      <span>Trello</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Campo para outros softwares -->
+          <div class="mt-6">
+            <label for="outros_softwares" class="block text-sm font-medium mb-2">Outros softwares (se não estiver na lista acima)</label>
+            <input 
+              type="text" 
+              id="outros_softwares" 
+              name="outros_softwares" 
+              class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300"
+              placeholder="Ex: Monday.com, Notion, Jira, etc."
+            />
+          </div>
+          
+          <div class="flex justify-between mt-8">
+            <button type="button" id="prevBtn2" class="nav-button secondary">
+              ← Voltar
+            </button>
+            <button type="button" id="nextBtn2" class="nav-button primary">
+              Próximo → Finalizar
+            </button>
+          </div>
+        </div>
+        
+        <!-- Etapa 3: Finalizar -->
+        <div class="form-step" id="step3">
+          <h3 class="text-xl font-bold mb-6 text-yellow-400">🎯 Finalizar Análise</h3>
+          
+          <div>
+            <label for="mensagem" class="block text-sm font-medium mb-2">Como podemos ajudar? (Opcional)</label>
+            <textarea 
+              id="mensagem" 
+              name="mensagem" 
+              rows="4"
+              class="w-full p-4 border border-white/20 rounded-sm bg-white/5 backdrop-blur-lg text-white placeholder-white/60 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300 resize-none"
+              placeholder="Conte-nos sobre os principais desafios da sua empresa com softwares para nossa análise..."
+            ></textarea>
+          </div>
+          
+          <div class="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-4 mt-6">
+            <h4 class="text-yellow-400 font-bold mb-2">📊 O que você receberá:</h4>
+            <ul class="text-sm text-white space-y-1">
+              <li>• Análise completa dos softwares utilizados</li>
+              <li>• Identificação de redundâncias e custos desnecessários</li>
+              <li>• Estimativa de economia potencial</li>
+              <li>• Proposta de solução integrada</li>
+            </ul>
+          </div>
+          
+          <div class="flex justify-between mt-8">
+            <button type="button" id="prevBtn3" class="nav-button secondary">
+              ← Voltar
+            </button>
+            <button type="submit" id="submitBtn" class="nav-button primary">
+              🚀 RECEBER ANÁLISE GRATUITA
+            </button>
+          </div>
+        </div>
+        </div>
+      </form>
+      
+      <p class="text-sm text-white/60 text-center mt-6">
+        🔒 Seus dados estão seguros e não serão compartilhados com terceiros
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Estado do formulário
+  let currentStep = 1;
+  const totalSteps = 3;
+  
+  // Elementos DOM
+  const progressFill = document.getElementById('progressFill');
+  const steps = document.querySelectorAll('.form-step');
+  const nextBtns = {
+    1: document.getElementById('nextBtn1'),
+    2: document.getElementById('nextBtn2')
+  };
+  const prevBtns = {
+    2: document.getElementById('prevBtn2'),
+    3: document.getElementById('prevBtn3')
+  };
+  
+  // Multiselect elements
+  const dropdown = document.getElementById('softwareDropdown');
+  const trigger = document.getElementById('softwareTrigger');
+  const options = document.getElementById('softwareOptions');
+  const placeholder = document.getElementById('softwarePlaceholder');
+  const selectedCount = document.getElementById('selectedCount');
+  const dropdownArrow = document.getElementById('dropdownArrow');
+  
+  // Função para atualizar progress bar
+  function updateProgress() {
+    const percentage = (currentStep / totalSteps) * 100;
+    progressFill.style.width = `${percentage}%`;
+  }
+  
+  // Função para mostrar/ocultar etapas
+  function showStep(step) {
+    steps.forEach((s, index) => {
+      s.classList.remove('active', 'prev');
+      if (index + 1 === step) {
+        s.classList.add('active');
+      } else if (index + 1 < step) {
+        s.classList.add('prev');
+      }
+    });
+    
+    // Ajustar altura do container baseado na etapa ativa
+    const activeStep = document.querySelector('.form-step.active');
+    const container = document.querySelector('.form-steps-container');
+    if (activeStep && container) {
+      container.style.minHeight = activeStep.scrollHeight + 'px';
+    }
+  }
+  
+  // Função para ir para próxima etapa
+  function nextStep() {
+    if (currentStep < totalSteps) {
+      currentStep++;
+      showStep(currentStep);
+      updateProgress();
+    }
+  }
+  
+  // Função para voltar etapa
+  function prevStep() {
+    if (currentStep > 1) {
+      currentStep--;
+      showStep(currentStep);
+      updateProgress();
+    }
+  }
+  
+  // Event listeners para navegação
+  nextBtns[1].addEventListener('click', () => {
+    // Validar etapa 1
+    const requiredFields = ['nome', 'email', 'empresa', 'cargo'];
+    let valid = true;
+    
+    requiredFields.forEach(field => {
+      const input = document.getElementById(field);
+      if (!input.value.trim()) {
+        input.focus();
+        valid = false;
+      }
+    });
+    
+    if (valid) {
+      nextStep();
+    } else {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+    }
+  });
+  
+  nextBtns[2].addEventListener('click', () => {
+    // Validar etapa 2
+    const selectedSoftwares = document.querySelectorAll('input[name="softwares"]:checked');
+    const outrosSoftwares = document.getElementById('outros_softwares').value.trim();
+    
+    if (selectedSoftwares.length === 0 && !outrosSoftwares) {
+      alert('Por favor, selecione pelo menos um software ou informe outros softwares.');
+      return;
+    }
+    
+    nextStep();
+  });
+  
+  prevBtns[2].addEventListener('click', prevStep);
+  prevBtns[3].addEventListener('click', prevStep);
+  
+  // Multiselect functionality
+  let selectedItems = new Set();
+  
+  function updateDropdown() {
+    const count = selectedItems.size;
+    if (count > 0) {
+      selectedCount.textContent = count;
+      selectedCount.style.display = 'block';
+      placeholder.textContent = `${count} software(s) selecionado(s)`;
+    } else {
+      selectedCount.style.display = 'none';
+      placeholder.textContent = 'Selecione os softwares utilizados';
+    }
+    
+    // Atualizar visual das opções selecionadas
+    document.querySelectorAll('.multiselect-option').forEach(option => {
+      const checkbox = option.querySelector('input[type="checkbox"]');
+      if (selectedItems.has(checkbox.value)) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+  }
+  
+  // Toggle dropdown
+  trigger.addEventListener('click', () => {
+    dropdown.classList.toggle('open');
+    dropdownArrow.style.transform = dropdown.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+  });
+  
+  // Fechar dropdown ao clicar fora
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove('open');
+      dropdownArrow.style.transform = 'rotate(0deg)';
+    }
+  });
+  
+  // Event listeners para checkboxes
+  document.querySelectorAll('input[name="softwares"]').forEach(checkbox => {
+    checkbox.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        selectedItems.add(e.target.value);
+      } else {
+        selectedItems.delete(e.target.value);
+      }
+      updateDropdown();
+    });
+  });
+  
+  // Submit do formulário
+  document.getElementById('modernContactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = this as HTMLFormElement;
+    const formData = new FormData(form);
+    
+    // Capturar softwares selecionados
+    const softwaresSelecionados = Array.from(selectedItems);
+    const outrosSoftwares = formData.get('outros_softwares') || '';
+    
+    const data = {
+      nome: formData.get('nome'),
+      email: formData.get('email'),
+      telefone: formData.get('telefone'),
+      empresa: formData.get('empresa'),
+      cargo: formData.get('cargo'),
+      mensagem: formData.get('mensagem') || '',
+      softwares: softwaresSelecionados,
+      outros_softwares: outrosSoftwares,
+      timestamp: new Date().toISOString(),
+      source: 'klonatec-website-modern-form'
+    };
+    
+    // Mostrar loading no botão
+    const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '⏳ Enviando...';
+    submitBtn.disabled = true;
+    form.classList.add('loading');
+    
+    try {
+      // Importar função de salvamento via webhook
+      const { salvarLeadWebhook } = await import('../config/webhook.js');
+      
+      console.log('Dados do formulário:', data);
+      
+      // Salvar via webhook
+      const result = await salvarLeadWebhook(data);
+      
+      if (result.success) {
+        // Sucesso - Mostrar mensagem de agradecimento
+        showThankYouMessage(data.nome, data.email);
+        
+        // Limpar formulário
+        setTimeout(() => {
+          form.reset();
+          selectedItems.clear();
+          updateDropdown();
+          currentStep = 1;
+          showStep(1);
+          updateProgress();
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+          submitBtn.style.background = '';
+          form.classList.remove('loading');
+        }, 3000);
+      } else {
+        throw new Error(result.error || 'Erro ao salvar dados');
+      }
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
+      submitBtn.innerHTML = '❌ Erro ao enviar';
+      submitBtn.style.background = '#ef4444';
+      
+      setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        submitBtn.style.background = '';
+        form.classList.remove('loading');
+        alert('Erro ao enviar formulário. Tente novamente.');
+      }, 3000);
+    }
+  });
+  
+  // Função para mostrar mensagem de agradecimento
+  function showThankYouMessage(nome, email) {
+    // Criar modal de agradecimento
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4';
+    modal.innerHTML = `
+      <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-lg p-8 max-w-md w-full border border-yellow-400/30 relative">
+        <div class="text-center">
+          <div class="text-6xl mb-4">🎉</div>
+          <h3 class="text-2xl font-bold text-white mb-4">
+            Obrigado, ${nome}!
+          </h3>
+          <p class="text-slate-300 mb-6 leading-relaxed">
+            Recebemos sua solicitação com sucesso! Nossa equipe de especialistas analisará seus dados e preparará sua <span class="text-yellow-400 font-bold">Análise KaaS Gratuita</span>.
+          </p>
+          
+          <div class="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-4 mb-6">
+            <h4 class="text-yellow-400 font-bold mb-2">📧 Próximos Passos:</h4>
+            <ul class="text-sm text-white space-y-1 text-left">
+              <li>• Você receberá um email de confirmação em breve</li>
+              <li>• Nossa equipe entrará em contato em até <span class="text-yellow-400 font-bold">12 horas</span></li>
+              <li>• Apresentaremos sua análise personalizada</li>
+              <li>• Mostraremos como economizar até R$ 50.000/mês</li>
+            </ul>
+          </div>
+          
+          
+          <button onclick="this.closest('.fixed').remove()" class="bg-gradient-to-r from-yellow-500 to-red-500 text-white px-6 py-3 rounded-full font-bold hover:shadow-lg transition-all duration-300">
+            Entendi! 👍
+          </button>
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Auto-remover após 10 segundos
+    setTimeout(() => {
+      if (modal.parentNode) {
+        modal.remove();
+      }
+    }, 10000);
+  }
+
+  // Inicializar
+  showStep(1);
+  updateProgress();
+</script>

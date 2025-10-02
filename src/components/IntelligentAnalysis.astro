@@ -2,343 +2,78 @@
 // Componente de Análise Inteligente de Sistemas
 ---
 
-<section class="py-16 md:py-24 bg-white">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-12 sm:py-16 md:py-20 lg:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
     
     <!-- Header com Carrossel de Logos -->
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 text-slate-900">
+    <div class="text-center mb-12 sm:mb-16">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 text-slate-900 leading-tight">
         Análise Inteligente de Sistemas
       </h2>
       
-      <p class="text-xl text-slate-600 max-w-4xl mx-auto mb-12">
+      <p class="text-lg sm:text-xl text-slate-600 max-w-4xl mx-auto mb-8 sm:mb-12 leading-relaxed">
         Nossa análise especializada utiliza IA para investigar profundamente cada sistema e identificar exatamente quais features estão consumindo seu dinheiro.
       </p>
       
-      <!-- Carrossel de Logos -->
-      <div class="relative overflow-hidden mb-8">
-        <p class="text-center text-slate-500 mb-6 text-sm">
-          Trabalhamos com os principais sistemas do mercado:
-        </p>
-        <div class="relative overflow-hidden">
-          <div class="flex animate-scroll">
-            <!-- Primeira linha de logos -->
-            <div class="flex items-center gap-6 sm:gap-8 whitespace-nowrap">
-              <!-- CRM Systems -->
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-blue-500 rounded flex items-center justify-center">
-                  <!-- Salesforce Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Salesforce</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-green-500 rounded flex items-center justify-center">
-                  <!-- HubSpot Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">HubSpot</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-purple-500 rounded flex items-center justify-center">
-                  <!-- Pipedrive Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Pipedrive</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-red-500 rounded flex items-center justify-center">
-                  <!-- Zoho Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Zoho CRM</span>
-              </div>
-              
-              <!-- Atendimento -->
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-orange-500 rounded flex items-center justify-center">
-                  <!-- Zendesk Logo SVG Oficial -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Zendesk</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-blue-600 rounded flex items-center justify-center">
-                  <!-- Freshdesk Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Freshdesk</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-indigo-500 rounded flex items-center justify-center">
-                  <!-- Intercom Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Intercom</span>
-              </div>
-              
-              <!-- Comunicação -->
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-yellow-500 rounded flex items-center justify-center">
-                  <!-- Slack Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Slack</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-blue-700 rounded flex items-center justify-center">
-                  <!-- Microsoft Teams Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Microsoft Teams</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-green-600 rounded flex items-center justify-center">
-                  <!-- Discord Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Discord</span>
-              </div>
-              
-              <!-- ERP -->
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-blue-800 rounded flex items-center justify-center">
-                  <!-- SAP Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">SAP</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-orange-600 rounded flex items-center justify-center">
-                  <!-- Oracle Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Oracle</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-gray-600 rounded flex items-center justify-center">
-                  <!-- NetSuite Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">NetSuite</span>
-              </div>
-            </div>
-            
-            <!-- Segunda linha de logos (duplicada para efeito contínuo) -->
-            <div class="flex items-center gap-6 sm:gap-8 whitespace-nowrap ml-6">
-              <!-- CRM Systems -->
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-blue-500 rounded flex items-center justify-center">
-                  <!-- Salesforce Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Salesforce</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-green-500 rounded flex items-center justify-center">
-                  <!-- HubSpot Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">HubSpot</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-purple-500 rounded flex items-center justify-center">
-                  <!-- Pipedrive Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Pipedrive</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-red-500 rounded flex items-center justify-center">
-                  <!-- Zoho Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Zoho CRM</span>
-              </div>
-              
-              <!-- Atendimento -->
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-orange-500 rounded flex items-center justify-center">
-                  <!-- Zendesk Logo SVG Oficial -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Zendesk</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-blue-600 rounded flex items-center justify-center">
-                  <!-- Freshdesk Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Freshdesk</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-indigo-500 rounded flex items-center justify-center">
-                  <!-- Intercom Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Intercom</span>
-              </div>
-              
-              <!-- Comunicação -->
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-yellow-500 rounded flex items-center justify-center">
-                  <!-- Slack Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Slack</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-blue-700 rounded flex items-center justify-center">
-                  <!-- Microsoft Teams Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Microsoft Teams</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-green-600 rounded flex items-center justify-center">
-                  <!-- Discord Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Discord</span>
-              </div>
-              
-              <!-- ERP -->
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-blue-800 rounded flex items-center justify-center">
-                  <!-- SAP Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">SAP</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-orange-600 rounded flex items-center justify-center">
-                  <!-- Oracle Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">Oracle</span>
-              </div>
-              <div class="flex items-center gap-2 text-slate-600">
-                <div class="w-10 h-10 bg-gray-600 rounded flex items-center justify-center">
-                  <!-- NetSuite Logo SVG -->
-                  <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <span class="font-semibold text-sm">NetSuite</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Conteúdo Principal -->
-    <div class="grid lg:grid-cols-2 gap-12">
+    <div class="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
       
       <!-- Coluna Esquerda: Como Funciona -->
       <div>
-        <h3 class="text-2xl font-bold text-slate-900 mb-8">
+        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6 sm:mb-8">
           Como Funciona Nossa Análise
         </h3>
         
-        <div class="space-y-6">
+        <div class="space-y-4 sm:space-y-6">
           <!-- Passo 1 -->
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <span class="text-white font-bold text-lg">1</span>
+          <div class="flex items-start gap-3 sm:gap-4">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="text-white font-bold text-sm sm:text-lg">1</span>
             </div>
             <div>
-              <h4 class="text-lg font-bold text-slate-900 mb-2">Análise de Uso Real</h4>
-              <p class="text-slate-600">
+              <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2">Análise de Uso Real</h4>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                 Monitoramos como cada funcionalidade é utilizada na prática, identificando features subutilizadas ou redundantes.
               </p>
             </div>
           </div>
           
           <!-- Passo 2 -->
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <span class="text-white font-bold text-lg">2</span>
+          <div class="flex items-start gap-3 sm:gap-4">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="text-white font-bold text-sm sm:text-lg">2</span>
             </div>
             <div>
-              <h4 class="text-lg font-bold text-slate-900 mb-2">Mapeamento de Custos</h4>
-              <p class="text-slate-600">
+              <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2">Mapeamento de Custos</h4>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                 Calculamos o custo real de cada feature, incluindo licenças, manutenção e tempo de equipe.
               </p>
             </div>
           </div>
           
           <!-- Passo 3 -->
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <span class="text-white font-bold text-lg">3</span>
+          <div class="flex items-start gap-3 sm:gap-4">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="text-white font-bold text-sm sm:text-lg">3</span>
             </div>
             <div>
-              <h4 class="text-lg font-bold text-slate-900 mb-2">Identificação de Redundâncias</h4>
-              <p class="text-slate-600">
+              <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2">Identificação de Redundâncias</h4>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                 Detectamos funcionalidades similares em diferentes sistemas que podem ser consolidadas.
               </p>
             </div>
           </div>
           
           <!-- Passo 4 -->
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <span class="text-white font-bold text-lg">4</span>
+          <div class="flex items-start gap-3 sm:gap-4">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="text-white font-bold text-sm sm:text-lg">4</span>
             </div>
             <div>
-              <h4 class="text-lg font-bold text-slate-900 mb-2">Relatório Executivo</h4>
-              <p class="text-slate-600">
+              <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-1 sm:mb-2">Relatório Executivo</h4>
+              <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
                 Entregamos um relatório detalhado com recomendações específicas para otimização.
               </p>
             </div>
@@ -348,46 +83,46 @@
       
       <!-- Coluna Direita: O que Investigamos -->
       <div>
-        <h3 class="text-2xl font-bold text-slate-900 mb-8">
+        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-6 sm:mb-8">
           O que Investigamos
         </h3>
         
-        <div class="bg-slate-50 rounded p-6">
-          <div class="grid grid-cols-2 gap-4">
+        <div class="bg-slate-50 rounded p-4 sm:p-6">
+          <div class="grid grid-cols-2 gap-3 sm:gap-4">
             <!-- Funcionalidades -->
-            <div class="bg-white rounded p-4 border border-slate-200">
-              <div class="flex items-center gap-3 mb-2">
-                <div class="w-6 h-6 bg-orange-500 rounded-full"></div>
-                <h4 class="font-bold text-slate-900">Funcionalidades</h4>
+            <div class="bg-white rounded p-3 sm:p-4 border border-slate-200">
+              <div class="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                <div class="w-4 h-4 sm:w-6 sm:h-6 bg-orange-500 rounded-full"></div>
+                <h4 class="font-bold text-slate-900 text-sm sm:text-base">Funcionalidades</h4>
               </div>
-              <p class="text-sm text-slate-600">Cada feature de cada sistema</p>
+              <p class="text-xs sm:text-sm text-slate-600">Cada feature de cada sistema</p>
             </div>
             
             <!-- Custos -->
-            <div class="bg-white rounded p-4 border border-slate-200">
-              <div class="flex items-center gap-3 mb-2">
-                <div class="w-6 h-6 bg-orange-500 rounded-full"></div>
-                <h4 class="font-bold text-slate-900">Custos</h4>
+            <div class="bg-white rounded p-3 sm:p-4 border border-slate-200">
+              <div class="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                <div class="w-4 h-4 sm:w-6 sm:h-6 bg-orange-500 rounded-full"></div>
+                <h4 class="font-bold text-slate-900 text-sm sm:text-base">Custos</h4>
               </div>
-              <p class="text-sm text-slate-600">Valor real de cada funcionalidade</p>
+              <p class="text-xs sm:text-sm text-slate-600">Valor real de cada funcionalidade</p>
             </div>
             
             <!-- Uso -->
-            <div class="bg-white rounded p-4 border border-slate-200">
-              <div class="flex items-center gap-3 mb-2">
-                <div class="w-6 h-6 bg-green-500 rounded-full"></div>
-                <h4 class="font-bold text-slate-900">Uso</h4>
+            <div class="bg-white rounded p-3 sm:p-4 border border-slate-200">
+              <div class="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                <div class="w-4 h-4 sm:w-6 sm:h-6 bg-green-500 rounded-full"></div>
+                <h4 class="font-bold text-slate-900 text-sm sm:text-base">Uso</h4>
               </div>
-              <p class="text-sm text-slate-600">Frequência e importância</p>
+              <p class="text-xs sm:text-sm text-slate-600">Frequência e importância</p>
             </div>
             
             <!-- Redundâncias -->
-            <div class="bg-white rounded p-4 border border-slate-200">
-              <div class="flex items-center gap-3 mb-2">
-                <div class="w-6 h-6 bg-blue-500 rounded-full"></div>
-                <h4 class="font-bold text-slate-900">Redundâncias</h4>
+            <div class="bg-white rounded p-3 sm:p-4 border border-slate-200">
+              <div class="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                <div class="w-4 h-4 sm:w-6 sm:h-6 bg-blue-500 rounded-full"></div>
+                <h4 class="font-bold text-slate-900 text-sm sm:text-base">Redundâncias</h4>
               </div>
-              <p class="text-sm text-slate-600">Sobreposições entre sistemas</p>
+              <p class="text-xs sm:text-sm text-slate-600">Sobreposições entre sistemas</p>
             </div>
           </div>
         </div>
@@ -396,22 +131,3 @@
   </div>
 </section>
 
-<style>
-  /* Animação do carrossel */
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-  
-  .animate-scroll {
-    animation: scroll 25s linear infinite;
-  }
-  
-  .animate-scroll:hover {
-    animation-play-state: paused;
-  }
-</style>
